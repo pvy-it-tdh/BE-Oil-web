@@ -1,24 +1,26 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
 @Entity
+@Table(name ="users" )
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @Column(name = "username")
     private String name;
+    @Column(name = "password")
     private String password;
+    @Column(name = "email")
     private String email;
-    private String fullname;
+    @Column(name = "full_name")
+    private String full_name;
+    @Column(name = "address")
     private String address;
+    @Column(name = "phone")
     private String phone;
-    private Date created_at;
 
     public String getName() {
         return name;
@@ -44,12 +46,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
     public String getAddress() {
@@ -66,13 +68,5 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
     }
 }
