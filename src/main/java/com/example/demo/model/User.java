@@ -1,12 +1,11 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name ="users" )
 public class User {
-    @Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     @Column(name = "username")

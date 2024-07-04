@@ -1,35 +1,41 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "order")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long OrderId;
+    private Long orderId;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
     @Column(name = "total_amount")
     private Double totalAmount;
+
     @Column(name = "status")
     private String status;
+
     @Column(name = "create_at")
     private Date createAt;
-    @OneToMany(mappedBy = "order")
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItems> orderItems;
 
+    // Getters and Setters
 
     public Long getOrderId() {
-        return OrderId;
+        return orderId;
     }
 
     public void setOrderId(Long orderId) {
-        OrderId = orderId;
+        this.orderId = orderId;
     }
 
     public User getUser() {
