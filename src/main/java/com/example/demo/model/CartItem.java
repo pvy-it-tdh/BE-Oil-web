@@ -12,22 +12,30 @@ public class CartItem {
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
     @OneToOne
     @JoinColumn(name = "cart_id")
     private ShoppingCart cart;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+
+    @OneToMany( mappedBy = "cartitem", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Product> productList = new ArrayList<>();
+
     @Column(name = "quantity")
     private Integer quantity;
+
     @Column(name = "adddate")
     private Date adddate;
+
     @Column(name = "totalprice")
     private Double totalprice;
+
     @Column(name = "discount")
     private Double discount;
+
     @Column(name = "finalprice")
     private Double finalprice;
 

@@ -9,8 +9,10 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CategoryID;
+
     @Column(name = "name_category")
     private String name;
+
     @Column(name = "description")
     private String description;
 

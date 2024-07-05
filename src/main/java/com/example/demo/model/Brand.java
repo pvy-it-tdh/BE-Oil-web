@@ -8,8 +8,10 @@ public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long brandId;
+
     @Column(name = "name_brand")
     private String name;
+
     @Column(name = "description")
     private String description;
 

@@ -8,16 +8,22 @@ public class User {
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
     @Column(name = "username")
     private String name;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "full_name")
     private String full_name;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "phone")
     private String phone;
 

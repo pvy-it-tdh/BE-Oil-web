@@ -18,8 +18,10 @@ public class ShoppingCart {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
     @Column(name = "quantity")
     private Integer quantity;
+
     @Column(name = "create_at")
     private Date createAt;
 

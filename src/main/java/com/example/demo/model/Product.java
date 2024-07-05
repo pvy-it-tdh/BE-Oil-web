@@ -19,6 +19,9 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name = "cartitem_id")
+    private CartItem cartitem;
 
     public Long getId() {
         return Id;
