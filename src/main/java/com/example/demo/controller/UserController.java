@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.DTO.UserDTO;
 import com.example.demo.Services.UserService;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/register")
-    public User createUser(@RequestBody User user)
+    public User createUser(@RequestBody UserDTO user)
     {
         return userService.createUser(user);
     }
