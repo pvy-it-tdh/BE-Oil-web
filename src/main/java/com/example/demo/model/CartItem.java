@@ -1,50 +1,46 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "cartitems")
+@Table(name = "cart_items")
 public class CartItem {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cart_id")
     private ShoppingCart cart;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToMany( mappedBy = "cartitem", cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Product> productList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "adddate")
-    private Date adddate;
+    @Column(name = "add_date")
+    private Date addDate;
 
-    @Column(name = "totalprice")
-    private Double totalprice;
+    @Column(name = "total_price")
+    private Double totalPrice;
 
     @Column(name = "discount")
     private Double discount;
 
-    @Column(name = "finalprice")
-    private Double finalprice;
+    @Column(name = "final_price")
+    private Double finalPrice;
+
+    // Getters and Setters
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public ShoppingCart getCart() {
@@ -55,20 +51,12 @@ public class CartItem {
         this.cart = cart;
     }
 
-    public User getUser() {
-        return user;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Integer getQuantity() {
@@ -79,20 +67,20 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public Date getAdddate() {
-        return adddate;
+    public Date getAddDate() {
+        return addDate;
     }
 
-    public void setAdddate(Date adddate) {
-        this.adddate = adddate;
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
     }
 
-    public Double getTotalprice() {
-        return totalprice;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalprice(Double totalprice) {
-        this.totalprice = totalprice;
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Double getDiscount() {
@@ -103,11 +91,11 @@ public class CartItem {
         this.discount = discount;
     }
 
-    public Double getFinalprice() {
-        return finalprice;
+    public Double getFinalPrice() {
+        return finalPrice;
     }
 
-    public void setFinalprice(Double finalprice) {
-        this.finalprice = finalprice;
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

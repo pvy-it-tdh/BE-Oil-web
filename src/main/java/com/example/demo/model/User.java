@@ -3,14 +3,14 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name ="users" )
+@Table(name ="users")
 public class User {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(name = "username")
-    private String name;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -19,7 +19,7 @@ public class User {
     private String email;
 
     @Column(name = "full_name")
-    private String full_name;
+    private String fullName;
 
     @Column(name = "address")
     private String address;
@@ -27,12 +27,22 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
-    public String getName() {
-        return name;
+    // Getters and Setters
+
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -51,12 +61,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getAddress() {

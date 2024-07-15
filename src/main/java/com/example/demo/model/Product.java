@@ -7,28 +7,32 @@ import jakarta.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
+
     @Column(name = "name_product")
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "price")
     private int price;
+
     @Column(name = "stock")
     private int stock;
+
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
-    @ManyToOne
-    @JoinColumn(name = "cartitem_id")
-    private CartItem cartitem;
+
+    // Getters and Setters
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {

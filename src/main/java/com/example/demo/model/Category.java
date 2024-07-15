@@ -2,13 +2,12 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
-
 @Entity
-@Table(name = "category")
+@Table(name = "categories") // Consistent naming convention
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CategoryID;
+    private Long categoryId;
 
     @Column(name = "name_category")
     private String name;
@@ -16,12 +15,14 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    public Long getCategoryID() {
-        return CategoryID;
+    // Getters and Setters
+
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryID(Long categoryID) {
-        CategoryID = categoryID;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {

@@ -1,29 +1,23 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-
-import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "shoppingcart")
+@Table(name = "shopping_carts")
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
     @ManyToOne
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems;
 
-    @Column(name = "quantity")
-    private Integer quantity;
-
-    @Column(name = "create_at")
-    private Date createAt;
+    // Getters and Setters
 
     public Long getCartId() {
         return cartId;
@@ -41,27 +35,11 @@ public class ShoppingCart {
         this.user = user;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<CartItem> getCartItems() {
+        return cartItems;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 }
