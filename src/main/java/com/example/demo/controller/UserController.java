@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.DTO.UserUpdate;
 import com.example.demo.Services.UserService;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class UserController {
     @GetMapping("/{userId}")
     User  getUserById(@PathVariable("userId") Long userId){
         return userService.getUser(userId);
+    }
+    @PutMapping("/{userId}")
+    User updateUser(@PathVariable Long userId,@RequestBody UserUpdate userUpdate)
+    {
+        return userService.UserUpdate(userId,userUpdate);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.DTO.UserUpdate;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,16 @@ public class UserService implements UserDetailsService{
     public User getUser(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+    public User UserUpdate(Long userId ,UserUpdate userUpdate)
+    {
+        User user=getUser(userId);
+        user.setAddress(userUpdate.getAddress());
+        user.setEmail(userUpdate.getEmail());
+        user.setPassword(userUpdate.getPassword());
+        user.setFullName(userUpdate.getFullName());
+        user.setPhone(userUpdate.getPhone());
+        return userRepository.save(user);
     }
 
 }
