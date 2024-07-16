@@ -12,7 +12,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/register")
-    public User createUser(@RequestBody UserDTO user)
+     User createUser(@RequestBody UserDTO user)
     {
         return userService.createUser(user);
     }
