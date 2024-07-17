@@ -17,6 +17,10 @@ public class UserService implements UserDetailsService{
     public User createUser(UserDTO userDTO)
     {
         User user = new User();
+        if (userRepository.existsByUsername(userDTO.getUsername()))
+        {
+            throw new  RuntimeException("User exists");
+        }
         user.setUsername(userDTO.getUsername());
         user.setAddress(userDTO.getAddress());
         user.setEmail(userDTO.getEmail());

@@ -1,7 +1,10 @@
 package com.example.demo.DTO;
 
+import jakarta.validation.constraints.Size;
+
 public class UserDTO {
     private String username;
+    @Size(min=8,message = "Password must be least 8 characters")
     private String password;
     private String email;
     private String fullName;
