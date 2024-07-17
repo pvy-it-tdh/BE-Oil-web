@@ -1,11 +1,16 @@
 package com.example.demo.DTO;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class UserDTO {
+    @Size(min=3, message = "Username must be least 3 characters")
     private String username;
     @Size(min=8,message = "Password must be least 8 characters")
     private String password;
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Email should be valid")
     private String email;
     private String fullName;
     private String address;
