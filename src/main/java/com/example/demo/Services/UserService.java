@@ -49,7 +49,7 @@ public class UserService implements UserDetailsService{
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
-    public User UserUpdate(Long userId ,UserUpdate userUpdate)
+    public UserDTO UserUpdate(Long userId ,UserUpdate userUpdate)
     {
         User user=getUser(userId);
         user.setAddress(userUpdate.getAddress());
@@ -57,7 +57,9 @@ public class UserService implements UserDetailsService{
         user.setPassword(userUpdate.getPassword());
         user.setFullName(userUpdate.getFullName());
         user.setPhone(userUpdate.getPhone());
-        return userRepository.save(user);
+
+        User updateuser= userRepository.save(user);
+        return convertToDTO(updateuser);
     }
 
 }

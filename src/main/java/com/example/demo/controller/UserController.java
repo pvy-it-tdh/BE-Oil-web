@@ -29,9 +29,11 @@ public class UserController {
         return userService.getUser(userId);
     }
     @PutMapping("/{userId}")
-    User updateUser(@PathVariable Long userId,@RequestBody UserUpdate userUpdate)
+    ResponseEntity<ApiResponse<UserDTO>>UpdateUser(@PathVariable Long userId,@RequestBody UserUpdate userUpdate)
     {
-        return userService.UserUpdate(userId,userUpdate);
+        UserDTO updateUser =userService.UserUpdate( userId,userUpdate);
+        ApiResponse<UserDTO> response=new ApiResponse<>(true,"User updated success",updateUser);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
