@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.DTO.UserDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,6 +27,15 @@ public class User {
 
     @Column(name = "phone")
     private String phone;
+    public User() {}
+    public User(UserDTO userDTO) {
+        this.username = userDTO.getUsername();
+        this.password = userDTO.getPassword();
+        this.email = userDTO.getEmail();
+        this.fullName = userDTO.getFullName();
+        this.address = userDTO.getAddress();
+        this.phone = userDTO.getPhone();
+    }
 
     // Getters and Setters
 

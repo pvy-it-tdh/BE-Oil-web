@@ -14,20 +14,27 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
-    public User createUser(UserDTO userDTO)
-    {
-        User user = new User();
-        if (userRepository.existsByUsername(userDTO.getUsername()))
-        {
-            throw new  RuntimeException("User exists");
+
+    public UserDTO createUser(UserDTO userDTO) {
+        if (userRepository.existsByUsername(userDTO.getUsername())) {
+            throw new RuntimeException("User exists");
         }
-        user.setUsername(userDTO.getUsername());
-        user.setAddress(userDTO.getAddress());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setFullName(userDTO.getFullName());
-        user.setPhone(userDTO.getPhone());
-        return userRepository.save(user);
+
+        User user = new User (userDTO);
+        User savedUser = userRepository.save(user);
+
+        return convertToDTO(savedUser);
+    }
+
+    private UserDTO convertToDTO(User user) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(user.getUsername());
+        userDTO.setAddress(user.getAddress());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setFullName(user.getFullName());
+        userDTO.setPhone(user.getPhone());
+        return userDTO;
     }
     @Override
     public UserDetails loadUserByUsername(String username){
