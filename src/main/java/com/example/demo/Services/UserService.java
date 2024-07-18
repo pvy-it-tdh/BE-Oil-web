@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserDTO createUser(UserDTO userDTO) {
         if (userRepository.existsByUsername(userDTO.getUsername())) {
@@ -31,7 +34,7 @@ public class UserService implements UserDetailsService{
         userDTO.setUsername(user.getUsername());
         userDTO.setAddress(user.getAddress());
         userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
+        userDTO.setPassword(passwordEncoder.encode(user.getPassword()));
         userDTO.setFullName(user.getFullName());
         userDTO.setPhone(user.getPhone());
         return userDTO;
@@ -54,7 +57,7 @@ public class UserService implements UserDetailsService{
         User user=getUser(userId);
         user.setAddress(userUpdate.getAddress());
         user.setEmail(userUpdate.getEmail());
-        user.setPassword(userUpdate.getPassword());
+        user.setPassword(passwordEncoder.encode(userUpdate.getPassword()));
         user.setFullName(userUpdate.getFullName());
         user.setPhone(userUpdate.getPhone());
 
