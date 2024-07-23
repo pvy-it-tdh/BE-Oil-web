@@ -1,4 +1,4 @@
-package com.example.demo.Configs;
+package com.example.demo.config;
 
 
 import com.example.demo.JWT.JwtAuthenticationEntryPoint;
