@@ -2,7 +2,7 @@ package com.example.demo.Configs;
 
 
 import com.example.demo.JWT.JwtAuthenticationEntryPoint;
-import io.jsonwebtoken.security.Password;
+
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
